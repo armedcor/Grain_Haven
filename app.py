@@ -1,6 +1,4 @@
 import os
-import datetime
-import time
 
 from flask import Flask
 
@@ -15,5 +13,5 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.envrion.get('PORT')),
+            port=(os.environ.get('PORT')),
             debug=True)
