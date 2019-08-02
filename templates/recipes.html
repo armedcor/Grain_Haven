@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% for recipe in recipes %}
+    {{recipe.recipe_name}}
+    {{recipe.recipe_style}}
+    {{recipe.batch_size}}
+    {{recipe.brew_type}}
+    {{recipe.fermentables}}
+    {{recipe.hops}}
+    {{recipe.yeast}}
+    {{recipe.comments}}
+    {{recipe.image}}
+    {{recipe.rating}}
+    {% endfor %}
+    
+</body>
+</html>
