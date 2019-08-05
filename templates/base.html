@@ -10,7 +10,7 @@
     <title>grainHaven | A Grainfather Cookbook!</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Font Awesome -->
+   <!-- Font Awesome -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Local CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
@@ -22,7 +22,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{{url_for('home_page')}}">
-            <h1>grainHaven</h1>
+            <h2>grainHaven</h2>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,10 +30,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('home_page')}}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url_for('home_page')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('get_recipes')}}">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('add_recipe')}}">Add Recipe</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('about_page')}}">About</a>
@@ -47,7 +50,7 @@
 <body>
 
 
-    {% block home %} {% endblock %} {% block recipes %} {% endblock %} {% block about %} {% endblock %} {% block recipe %} {% endblock %}
+    {% block home %} {% endblock %} {% block recipes %} {% endblock %} {% block about %} {% endblock %} {% block recipe %} {% endblock %} {% block addrecipe %} {% endblock %}
 
 
 

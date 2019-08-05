@@ -1,28 +1,41 @@
 {% extends 'base.html' %} {% block recipe %} {% for recipe in recipes %}
 
-<h1><strong>{{recipe.recipe_name}}</strong></h1>
-<h2>{{recipe.recipe_style}}</h2>
+<div class="container-fluid">
+    <div class="row recipe-header">
+        <div class="col-6">
+            <h1><strong>{{recipe.recipe_name}}</strong></h1>
+            <h2>{{recipe.recipe_style}}</h2>
+        </div>
+        <div class="col-6">
+            <img src="{{recipe.image}}" height="250" width="250"></img>
+        </div>
+    </div>
 
-<img src="{{recipe.image}}"></img>
-
-<h3>Malt:</h3>
-<ul>
-    {% for fermentable in recipe.fermentables %}
-    <li>{{fermentable}}</li>
-    {% endfor %}
-</ul>
+    <h3>Malt:</h3>
+    <ul>
+        {% for fermentable in recipe.fermentables %}
+        <li>{{fermentable}}</li>
+        {% endfor %}
+    </ul>
 
 
-<h3>Hops:</h3>
-<ul>
-    {% for hop in recipe.hops %}
-    <li>{{hop}}</li>
-    {% endfor %}
-</ul>
+    <h3>Hops:</h3>
+    <ul>
+        {% for hop in recipe.hops %}
+        <li>{{hop}}</li>
+        {% endfor %}
+    </ul>
 
-<h3>Yeast:</h3>
-<p>{{recipe.yeast}}</p>
+    <h3>Mash Steps</h3>
+    <ul>
+        {% for step in recipe.mash_steps %}
+        <li>{{step}}</li>
+        {% endfor %}
+    </ul>
 
+    <h3>Yeast:</h3>
+    <p>{{recipe.yeast}}</p>
+</div>
 
 
 
