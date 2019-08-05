@@ -1,16 +1,23 @@
-{% extends 'base.html' %}
-{% block recipes %}
+{% extends 'base.html' %} {% block recipes %}
 
-    {% for recipe in recipes %}
-    {{recipe.recipe_name}}
-    {{recipe.recipe_style}}
-    {{recipe.batch_size}}
-    {{recipe.brew_type}}
-    {{recipe.fermentables}}
-    {{recipe.hops}}
-    {{recipe.yeast}}
-    {{recipe.comments}}
-    {{recipe.rating}}
-    {% endfor %}
+<div class="container-fluid">
+    <div class="row">
+        {% for recipe in recipes %}
+        <div class="col-sm-3">
+            <div class="card-deck">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{recipe.image}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                        <p class="card-text">{{recipe.comments}}</p>
+                        <a href="#" class="btn btn-primary">Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 
 {% endblock %}
