@@ -26,6 +26,14 @@ def home_page():
 def get_recipes():
     return render_template('recipes.html', recipes=mongo.db.recipes.find())
     
+
+# Render single recipe
+
+@app.route('/recipe_single/<recipe_id>')
+def recipe_single(recipe_id):
+    return render_template('recipepage.html', recipes=mongo.db.recipes.find({'_id': ObjectId(recipe_id)}))
+
+    
     
 # About page
 @app.route('/about')

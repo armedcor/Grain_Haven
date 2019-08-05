@@ -34,12 +34,14 @@ body {
   padding: 20px;
 }
 
-
-
 /*Recipe card's*/
 
 .card-img-top {
   width: 100%;
   height: 20vw;
   object-fit: cover;
+}
+
+.card-deck {
+  margin-top: 50px;
 }

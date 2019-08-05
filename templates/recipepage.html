@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block recipe %} {% for recipe in recipes %}
+
+<h1><strong>{{recipe.recipe_name}}</strong></h1>
+<h2>{{recipe.recipe_style}}</h2>
+
+<img src="{{recipe.image}}"></img>
+
+<h3>Malt:</h3>
+<ul>
+    {% for fermentable in recipe.fermentables %}
+    <li>{{fermentable}}</li>
+    {% endfor %}
+</ul>
+
+
+<h3>Hops:</h3>
+<ul>
+    {% for hop in recipe.hops %}
+    <li>{{hop}}</li>
+    {% endfor %}
+</ul>
+
+<h3>Yeast:</h3>
+<p>{{recipe.yeast}}</p>
+
+
+
+
+
+{% endfor %} {% endblock %}

@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{recipe.recipe_name}}</h5>
                         <p class="card-text">{{recipe.comments}}</p>
-                        <a href="#" class="btn btn-primary">Recipe</a>
+                        <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" class="btn btn-primary">Recipe</a>
                     </div>
                 </div>
             </div>
