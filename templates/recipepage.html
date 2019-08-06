@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block recipe %} {% for recipe in recipes %}
 
-<div class="container-fluid">
+<div class="container">
     <div class="row recipe-header">
         <div class="col-6">
             <h1><strong>{{recipe.recipe_name}}</strong></h1>
@@ -13,7 +13,7 @@
 
     <h3>Malt:</h3>
     <ul>
-        {% for fermentable in recipe.fermentables %}
+        {% for fermentable in recipe.fermentables.splitlines() %}
         <li>{{fermentable}}</li>
         {% endfor %}
     </ul>
@@ -21,14 +21,14 @@
 
     <h3>Hops:</h3>
     <ul>
-        {% for hop in recipe.hops %}
+        {% for hop in recipe.hops.splitlines() %}
         <li>{{hop}}</li>
         {% endfor %}
     </ul>
 
     <h3>Mash Steps</h3>
     <ul>
-        {% for step in recipe.mash_steps %}
+        {% for step in recipe.mash_steps.splitlines() %}
         <li>{{step}}</li>
         {% endfor %}
     </ul>

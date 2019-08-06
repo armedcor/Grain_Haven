@@ -3,40 +3,46 @@
 <h3>Add Recipe:</h3>
 <br>
 <div class="container">
-    <form action="" method="POST">
+    <form action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Recipe Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1">
+            <label for="recipe_name">Recipe Name</label>
+            <input type="text" name="recipe_name" class="form-control" id="recipe_name">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Recipe style</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1">
+            <label for="recipe_style">Recipe style</label>
+            <input type="text" name="recipe_style" class="form-control" id="recipe_style">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Fermentables <small>One Per Line</small></label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="batch_size">Batch Size</label>
+            <input type="text" name="batch_size" class="form-control" id="batch_size">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Hops <small>One Per Line</small></label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="fermentables">Fermentables <small>One Per Line</small></label>
+            <textarea class="form-control" name="fermentables" id="fermentables" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Mash Steps <small>One Per Line</small></label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="hops">Hops <small>One Per Line</small></label>
+            <textarea class="form-control" name="hops" id="hops" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Yeast</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="mash_steps">Mash Steps <small>One Per Line</small></label>
+            <textarea class="form-control" name="mash_steps" id="mash_steps" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Comments</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="yeast">Yeast</label>
+            <textarea class="form-control" name="yeast" id="yeast" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Link to photo</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <label for="comments">Comments</label>
+            <textarea class="form-control" name="comments" id="comments" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Link to photo</label>
+            <input type="text" name="image" class="form-control" id="image">
         </div>
         <button type="submit" class="btn btn-primary">Add Recipe</button>
+        <a href="{{url_for('get_recipes')}}" class="btn waves-effect waves-light red">Cancel
+                </a>
     </form>
 </div>
 

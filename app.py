@@ -41,6 +41,37 @@ def recipe_single(recipe_id):
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html')
+    
+
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    recipes = mongo.db.recipes
+    
+    recipe_name = request.form['recipe_name']
+    recipe_style = request.form['recipe_style']
+    batch_size = request.form['batch_size']
+    fermentables = request.form['fermentables']
+    hops = request.form['hops']
+    mash_steps = request.form['mash_steps']
+    yeast = request.form['yeast']
+    comments = request.form['comments']
+    image = request.form['image']
+    
+    recipe_form = {
+        'recipe_name': recipe_name,
+        'recipe_style': recipe_style,
+        'batch_size': batch_size,
+        'fermentables': fermentables,
+        'hops': hops,
+        'mash_steps': mash_steps,
+        'yeast': yeast,
+        'comments': comments,
+        'image': image
+    }
+    
+    recipes.insert_one(recipe_form)
+    return redirect(url_for('get_recipes'))
+    
 
 
 # About page
