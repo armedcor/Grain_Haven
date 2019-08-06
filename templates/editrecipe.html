@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block editrecipe %}
+
+<div class="container">
+    <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
+        <div class="form-group">
+            <label for="recipe_name">Recipe Name</label>
+            <input type="text" name="recipe_name" class="form-control" id="recipe_name" value="{{recipe.recipe_name}}">
+        </div>
+        <div class="form-group">
+            <label for="recipe_style">Recipe style</label>
+            <input type="text" name="recipe_style" class="form-control" id="recipe_style" value="{{recipe.recipe_style}}">
+        </div>
+        <div class="form-group">
+            <label for="batch_size">Batch Size</label>
+            <input type="text" name="batch_size" class="form-control" id="batch_size" value="{{recipe.batch_size}}">
+        </div>
+        <div class="form-group">
+            <label for="fermentables">Fermentables <small>One Per Line</small></label>
+            <textarea class="form-control" name="fermentables" id="fermentables" value="{{recipe.fermentables}}" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="hops">Hops <small>One Per Line</small></label>
+            <textarea class="form-control" name="hops" id="hops" value="{{recipe.hops}}" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="mash_steps">Mash Steps <small>One Per Line</small></label>
+            <textarea class="form-control" name="mash_steps" id="mash_steps" value="{{recipe.mash_steps}}" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="yeast">Yeast</label>
+            <textarea class="form-control" name="yeast" id="yeast" value="{{recipe.yeast}}" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea class="form-control" name="comments" id="comments" value="{{recipe.comments}}" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Link to photo</label>
+            <input type="text" name="image" class="form-control" value="{{recipe.image}}" id="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Recipe</button>
+        <a href="{{url_for('get_recipes')}}" class="btn waves-effect waves-light red">Cancel
+                </a>
+    </form>
+</div>
+
+{% endblock %}

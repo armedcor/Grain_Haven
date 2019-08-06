@@ -72,6 +72,12 @@ def insert_recipe():
     recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
     
+    
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('editrecipe.html', recipe=recipe)
+    
 
 
 # About page
