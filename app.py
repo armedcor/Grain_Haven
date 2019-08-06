@@ -66,7 +66,8 @@ def insert_recipe():
         'mash_steps': mash_steps,
         'yeast': yeast,
         'comments': comments,
-        'image': image
+        'image': image,
+        'can_delete': True
     }
     
     recipes.insert_one(recipe_form)
