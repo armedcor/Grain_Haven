@@ -72,12 +72,41 @@ def insert_recipe():
     recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
     
+# Edit Recipe
+    
     
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('editrecipe.html', recipe=recipe)
     
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])    
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    
+    recipe_name = request.form['recipe_name']
+    recipe_style = request.form['recipe_style']
+    batch_size = request.form['batch_size']
+    fermentables = request.form['fermentables']
+    hops = request.form['hops']
+    mash_steps = request.form['mash_steps']
+    yeast = request.form['yeast']
+    comments = request.form['comments']
+    image = request.form['image']
+    
+    recipes.update({'_id': ObjectId(recipe_id)},
+    {
+        'recipe_name': recipe_name,
+        'recipe_style': recipe_style,
+        'batch_size': batch_size,
+        'fermentables': fermentables,
+        'hops': hops,
+        'mash_steps': mash_steps,
+        'yeast': yeast,
+        'comments': comments,
+        'image': image
+    })
+    return redirect(url_for('get_recipes'))
 
 
 # About page
