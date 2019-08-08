@@ -1,24 +1,31 @@
 {% extends 'base.html' %} {% block recipes %}
 
+<div class="container">
+    <label for="recipe_style">Sort by</label>
+    <select name="recipe_style" class="form-control" id="recipe_style">
+                {% for style in styles %}
+                <option>{{style.style}}</option>
+                {% endfor %}
+            </select>
+</div>
+
 <div class="container-fluid">
     <div class="row">
-        {% for recipe in recipes %}
-        <div class="col-12 col-sm-6 col-xl-3 recipe_card">
+        {% for recipe in recipe %}
+        <div class="col-12 col-sm-6 col-xl-3">
             <div class="card-deck">
                 <div class="card">
                     <img class="card-img-top" src="{{recipe.image}}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{recipe.recipe_name}}</h5>
-                        <p class="card-text">{{recipe.comments}}</p>
+                        <h5 class="card-title text-center">{{recipe.recipe_name}}</h5>
+                        <p class="card-text text-scroll">{{recipe.comments}}</p>
                         <div class="row">
                             {% if recipe.can_delete %}
                             <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" class="btn btn-primary col">Recipe</a>
-                            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="btn btn-danger col" data-position="bottom" data-tooltip="Edit">
+                            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="btn btn-warning col" data-position="bottom" data-tooltip="Edit">
                     Edit</a>
-                            <button>Delete</button> {% else %}
-                            <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" class="btn btn-primary col">Recipe</a>
-                            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="btn btn-danger col" data-position="bottom" data-tooltip="Edit">
-                    Edit</a> {% endif %}
+                            <a href="{{url_for('remove_recipe', recipe_id=recipe._id)}}" class="btn btn-danger col">Delete</a> {% else %}
+                            <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" class="btn btn-primary col">Recipe</a> {% endif %}
                         </div>
                     </div>
                 </div>
@@ -27,6 +34,4 @@
         {% endfor %}
     </div>
 </div>
-
-
-{% endblock %}
+{{ pagination.info }} {{ pagination.links }} {% endblock %}
