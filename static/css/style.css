@@ -48,10 +48,41 @@ body {
   margin-top: 50px;
 }
 
-.recipe_card {
-  /*padding-left: 40px;*/
+.card-text {
+  height: 100px;
+  overflow: auto;
 }
 
-.recipe_header {
-  background-color: gray;
+/* Pagination styling */
+
+.pagination-page-info {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+
+/* Scroll Bar */
+
+/* width */
+
+.card-text::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+
+.card-text::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+.card-text::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+.card-text::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
