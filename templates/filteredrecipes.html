@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 {% block filtered %}
 
+<container>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Style Filter
+  </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{url_for('ipa_style')}}">IPA</a>
+            <a class="dropdown-item" href="{{url_for('stout_style')}}">Stout</a>
+            <a class="dropdown-item" href="{{url_for('amber_style')}}">Amber Ale</a>
+            <a class="dropdown-item" href="{{url_for('belgian_style')}}">Belgian Ale</a>
+            <a class="dropdown-item" href="{{url_for('lager_style')}}">Lager</a>
+            <a class="dropdown-item" href="{{url_for('pale_style')}}">Pale Ale</a>
+            <a class="dropdown-item" href="{{url_for('get_recipes')}}">All Recipes</a>
+        </div>
+    </div>
+</container>
+
 <div class="container-fluid">
     <div class="row">
         {% for recipe in recipes %}
