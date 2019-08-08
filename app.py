@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from flask_paginate import Pagination, get_page_parameter
 
 # Configure Flask App and set app Variables
 
@@ -24,7 +25,14 @@ def home_page():
 
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template('recipes.html', recipes=mongo.db.recipes.find())
+    per_page = 8
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    recipes = mongo.db.recipes.find()
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page,
+                           search=False, record_name='recipes', css_framework='bootstrap4', alignment='center')
+    recipe_page = recipes.skip((page - 1) * per_page).limit(per_page)
+    return render_template('recipes.html', recipe=recipe_page, pagination=pagination, recipes=mongo.db.recipes.find(),
+                           styles=mongo.db.recipe_style.find())
 
 
 # Render single recipe
@@ -40,7 +48,8 @@ def recipe_single(recipe_id):
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html')
+    return render_template('addrecipe.html',
+                           styles=mongo.db.recipe_style.find())
     
 
 @app.route('/insert_recipe', methods=['POST'])
@@ -105,12 +114,23 @@ def update_recipe(recipe_id):
         'mash_steps': mash_steps,
         'yeast': yeast,
         'comments': comments,
-        'image': image
+        'image': image,
+        'can_delete': True
     })
+    return redirect(url_for('get_recipes'))
+    
+    
+# Delete Recipe
+
+@app.route('/remove_recipe/<recipe_id>')
+def remove_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
 
 # About page
+
+
 @app.route('/about')
 def about_page():
     return render_template('about.html')
