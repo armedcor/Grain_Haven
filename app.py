@@ -50,12 +50,12 @@ def recipe_single(recipe_id):
 def add_recipe():
     return render_template('addrecipe.html',
                            styles=mongo.db.recipe_style.find())
-    
+
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    
+
     recipe_name = request.form['recipe_name']
     recipe_style = request.form['recipe_style']
     batch_size = request.form['batch_size']
@@ -65,7 +65,7 @@ def insert_recipe():
     yeast = request.form['yeast']
     comments = request.form['comments']
     image = request.form['image']
-    
+
     recipe_form = {
         'recipe_name': recipe_name,
         'recipe_style': recipe_style,
@@ -78,22 +78,22 @@ def insert_recipe():
         'image': image,
         'can_delete': True
     }
-    
+
     recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
-    
+
 # Edit Recipe
-    
-    
+
+
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('editrecipe.html', recipe=recipe)
-    
-@app.route('/update_recipe/<recipe_id>', methods=["POST"])    
+
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
-    
+
     recipe_name = request.form['recipe_name']
     recipe_style = request.form['recipe_style']
     batch_size = request.form['batch_size']
@@ -103,7 +103,7 @@ def update_recipe(recipe_id):
     yeast = request.form['yeast']
     comments = request.form['comments']
     image = request.form['image']
-    
+
     recipes.update({'_id': ObjectId(recipe_id)},
     {
         'recipe_name': recipe_name,
@@ -118,8 +118,8 @@ def update_recipe(recipe_id):
         'can_delete': True
     })
     return redirect(url_for('get_recipes'))
-    
-    
+
+
 # Delete Recipe
 
 @app.route('/remove_recipe/<recipe_id>')
@@ -127,6 +127,44 @@ def remove_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
+
+# Sort Recipes by Style
+
+@app.route('/ipa_style')
+def ipa_style():
+    return render_template('filteredrecipes.html',
+                           recipes=mongo.db.recipes.find({'recipe_style': 'IPA'}))
+                     
+                    
+
+@app.route('/amber_style')
+def amber_style():
+    return render_template('filteredrecipes.html',
+                           recipes=mongo.db.recipes.find({'recipe_style': 'Amber Ale'}))
+
+                     
+@app.route('/belgian_style')
+def belgian_style():
+    return render_template('filteredrecipes.html',
+                           recipes=mongo.db.recipes.find({'recipe_style': 'Belgian'}))
+                 
+               
+@app.route('/lager_style')
+def lager_style():
+    return render_template('filteredrecipes.html',
+                           recipes=mongo.db.recipes.find({'recipe_style': 'Lager'}))
+                
+ 
+@app.route('/stout_style')
+def stout_style():
+    return render_template('filteredrecipes.html',
+                           recipes=mongo.db.recipes.find({'recipe_style': 'Stout'}))
+
+
+@app.route('/pale_style')
+def pale_style():
+    return render_template('filteredrecipes.html',
+                           recipes=mongo.db.recipes.find({'recipe_style': 'Pale Ale'}))                  
 
 # About page
 
