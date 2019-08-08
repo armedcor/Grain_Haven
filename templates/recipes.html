@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block recipes %}
-
-<div class="container">
-    <label for="recipe_style">Sort by</label>
-    <select name="recipe_style" class="form-control" id="recipe_style">
-                {% for style in styles %}
-                <option>{{style.style}}</option>
-                {% endfor %}
-            </select>
-</div>
+<container>
+<a href="{{url_for('ipa_style')}}">IPA</a>
+<a href="{{url_for('stout_style')}}">Stout</a>
+<a href="{{url_for('amber_style')}}">Amber Ale</a>
+<a href="{{url_for('belgian_style')}}">Belgian Ale</a>
+<a href="{{url_for('lager_style')}}">Lager</a>
+<a href="{{url_for('pale_style')}}">Pale Ale</a>
+    
+</container>
 
 <div class="container-fluid">
     <div class="row">
