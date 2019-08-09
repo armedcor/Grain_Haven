@@ -5,6 +5,13 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  font-family: 'Lexend Zetta', sans-serif;
+  background-color: darkslategrey;
+}
+
+h1,
+h2 {
+  font-family: 'Saira Stencil One', cursive;
 }
 
 .jumbotron {
@@ -33,6 +40,12 @@ body {
 
 .navbar {
   padding: 20px;
+  background-color: #1b2a3a;
+}
+
+#navbarNav,
+.nav-link {
+  color: #f8f9fa !important;
 }
 
 
@@ -49,8 +62,43 @@ body {
 }
 
 .card-text {
-  height: 100px;
+  height: 110px;
   overflow: auto;
+}
+
+.filter-button {
+  padding: 20px 20px 0px;
+}
+
+/* Recipe Styling */
+
+.recipe-header {
+  margin-top: 25px;
+}
+
+.single-recipe-card {
+  margin: 20px;
+}
+
+.recipe-name {
+  padding-top: 90px;
+  text-align: center;
+}
+
+.single-recipe-h1 {
+font-size: 4rem;
+}
+
+.single-recipe-h2 {
+  font-size: 3rem;
+}
+
+.recipepage-image {
+  width: 100%;
+}
+
+.card-body-recipe {
+  margin: none;
 }
 
 /* Pagination styling */
