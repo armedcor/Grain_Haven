@@ -19,6 +19,7 @@ h2 {
   overflow: hidden;
   background-color: black;
   height: 90vh;
+  margin: auto;
 }
 
 .jumbotron video {
@@ -34,6 +35,11 @@ h2 {
 .jumbotron .container {
   z-index: 2;
   position: relative;
+}
+
+.text-white {
+  text-align: center;
+  padding-top: 50px;
 }
 
 /* Nav Bar  */
@@ -86,7 +92,7 @@ h2 {
 }
 
 .single-recipe-h1 {
-font-size: 4rem;
+  font-size: 4rem;
 }
 
 .single-recipe-h2 {
@@ -101,11 +107,34 @@ font-size: 4rem;
   margin: none;
 }
 
+/* Add and edit recipe */
+
+.add-recipe-text {
+  color: white;
+  padding-bottom: 20px;
+}
+
 /* Pagination styling */
 
 .pagination-page-info {
   text-align: center;
   margin-bottom: 5px;
+  color: white;
+}
+
+/* About Page */
+.about {
+  padding-top: 40px;
+}
+
+/* Footer */
+
+footer {
+  background-color: #343a40;
+  text-align: center;
+  color: white;
+  padding-top: 20px;
+  height: fit-content;
 }
 
 
