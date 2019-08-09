@@ -1,42 +1,68 @@
 {% extends 'base.html' %} {% block recipe %} {% for recipe in recipes %}
 
 <div class="container">
-    <div class="row recipe-header">
-        <div class="col-6">
-            <h1><strong>{{recipe.recipe_name}}</strong></h1>
-            <h2>{{recipe.recipe_style}}</h2>
-        </div>
-        <div class="col-6">
-            <img src="{{recipe.image}}" height="250" width="250"></img>
+    <div class="card single-recipe-card">
+        <div class="card-body">
+            <div class="row recipe-header">
+                <div class="col-xs-12 col-md-6">
+                    <img src="{{recipe.image}}" class="recipepage-image"></img>
+                </div>
+                <br>
+                <div class="col-xs-12 col-md-6 recipe-name">
+                    <h1 class="single-recipe-h1"><strong>{{recipe.recipe_name}}</strong></h1>
+                    <h2 class="single-recipe-h2">{{recipe.recipe_style}} Style</h2>
+                </div>
+            </div>
         </div>
     </div>
 
-    <h3>Malt:</h3>
-    <ul>
-        {% for fermentable in recipe.fermentables.splitlines() %}
-        <li>{{fermentable}}</li>
-        {% endfor %}
-    </ul>
+    <div class="card single-recipe-card">
+        <div class="card-body-recipe">
+            <h2>Ingrediants:</h2>
+            <br>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <h4>Malt:</h4>
+                    <ul>
+                        {% for fermentable in recipe.fermentables.splitlines() %}
+                        <li>{{fermentable}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
 
+                <div class="col-xs-6 col-md-6">
+                    <h4>Hops:</h4>
+                    <ul>
+                        {% for hop in recipe.hops.splitlines() %}
+                        <li>{{hop}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h3>Hops:</h3>
-    <ul>
-        {% for hop in recipe.hops.splitlines() %}
-        <li>{{hop}}</li>
-        {% endfor %}
-    </ul>
+    <div class="card single-recipe-card">
+        <div class="card-body-recipe">
+            <h3>Mash Steps</h3>
 
-    <h3>Mash Steps</h3>
-    <ul>
-        {% for step in recipe.mash_steps.splitlines() %}
-        <li>{{step}}</li>
-        {% endfor %}
-    </ul>
+            <br>
+            <ul>
+                {% for step in recipe.mash_steps.splitlines() %}
+                <li>{{step}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="card single-recipe-card">
+        <div class="card-body-recipe">
+            <h3>Yeast:</h3>
+            <br>
 
-    <h3>Yeast:</h3>
-    <p>{{recipe.yeast}}</p>
+            <p>{{recipe.yeast}}</p>
+        </div>
+    </div>
 </div>
-
 
 
 
