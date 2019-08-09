@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block editrecipe %}
 
+<h3 style="text-align: center; color: white; padding-top: 20px;">Edit Recipe</h3>
+
 <div class="container">
-    <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
+    <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="add-recipe-text">
         <div class="form-group">
             <label for="recipe_name">Recipe Name</label>
             <input type="text" name="recipe_name" class="form-control" id="recipe_name" value="{{recipe.recipe_name}}">
