@@ -105,7 +105,11 @@ h2 {
 }
 
 .card-body-recipe {
-  margin: none;
+  margin-left: 10px;
+}
+
+.btn {
+  margin: 5px;
 }
 
 /* Add and edit recipe */
