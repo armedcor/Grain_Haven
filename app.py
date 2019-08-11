@@ -28,10 +28,14 @@ def get_recipes():
     per_page = 8
     page = request.args.get(get_page_parameter(), type=int, default=1)
     recipes = mongo.db.recipes.find()
-    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page,
-                           search=False, record_name='recipes', css_framework='bootstrap4', alignment='center')
+    pagination = Pagination(page=page, total=recipes.count(),
+                            per_page=per_page,
+                            search=False, record_name='recipes',
+                            css_framework='bootstrap4', alignment='center')
     recipe_page = recipes.skip((page - 1) * per_page).limit(per_page)
-    return render_template('recipes.html', recipe=recipe_page, pagination=pagination, recipes=mongo.db.recipes.find(),
+    return render_template('recipes.html', recipe=recipe_page,
+                           pagination=pagination,
+                           recipes=mongo.db.recipes.find(),
                            styles=mongo.db.recipe_style.find())
 
 
@@ -40,8 +44,8 @@ def get_recipes():
 @app.route('/recipe_single/<recipe_id>')
 def recipe_single(recipe_id):
     return render_template('recipepage.html',
-                         recipes=mongo.db.recipes.find
-                         ({'_id': ObjectId(recipe_id)}))
+                           recipes=mongo.db.recipes.find
+                           ({'_id': ObjectId(recipe_id)}))
 
 # Create Recipe Route
 
@@ -90,6 +94,7 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('editrecipe.html', recipe=recipe)
 
+
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
@@ -105,7 +110,7 @@ def update_recipe(recipe_id):
     image = request.form['image']
 
     recipes.update({'_id': ObjectId(recipe_id)},
-    {
+                   {
         'recipe_name': recipe_name,
         'recipe_style': recipe_style,
         'batch_size': batch_size,
@@ -133,38 +138,43 @@ def remove_recipe(recipe_id):
 @app.route('/ipa_style')
 def ipa_style():
     return render_template('filteredrecipes.html',
-                           recipes=mongo.db.recipes.find({'recipe_style': 'IPA'}))
-                     
-                    
+                           recipes=mongo.db.recipes.find
+                           ({'recipe_style': 'IPA'}))
+
 
 @app.route('/amber_style')
 def amber_style():
     return render_template('filteredrecipes.html',
-                           recipes=mongo.db.recipes.find({'recipe_style': 'Amber Ale'}))
+                           recipes=mongo.db.recipes.find
+                           ({'recipe_style': 'Amber Ale'}))
 
-                     
+
 @app.route('/belgian_style')
 def belgian_style():
     return render_template('filteredrecipes.html',
-                           recipes=mongo.db.recipes.find({'recipe_style': 'Belgian'}))
-                 
-               
+                           recipes=mongo.db.recipes.find
+                           ({'recipe_style': 'Belgian'}))
+
+
 @app.route('/lager_style')
 def lager_style():
     return render_template('filteredrecipes.html',
-                           recipes=mongo.db.recipes.find({'recipe_style': 'Lager'}))
-                
- 
+                           recipes=mongo.db.recipes.find
+                           ({'recipe_style': 'Lager'}))
+
+
 @app.route('/stout_style')
 def stout_style():
     return render_template('filteredrecipes.html',
-                           recipes=mongo.db.recipes.find({'recipe_style': 'Stout'}))
+                           recipes=mongo.db.recipes.find
+                           ({'recipe_style': 'Stout'}))
 
 
 @app.route('/pale_style')
 def pale_style():
     return render_template('filteredrecipes.html',
-                           recipes=mongo.db.recipes.find({'recipe_style': 'Pale Ale'}))                  
+                           recipes=mongo.db.recipes.find
+                           ({'recipe_style': 'Pale Ale'}))
 
 # About page
 
